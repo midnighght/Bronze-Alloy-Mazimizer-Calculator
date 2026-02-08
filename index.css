@@ -1,0 +1,58 @@
+/* Double Range Slider Styling */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.slider-min {
+    z-index: 1;
+}
+
+.slider-max {
+    z-index: 2;
+}
+
+input[type="range"]:hover,
+input[type="range"]:focus,
+input[type="range"]:active {
+    z-index: 3 !important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    background-color: #f6d6bd;
+    border-radius: 50%;
+    border: 2px solid #20394f;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    background-color: #f6d6bd;
+    border-radius: 50%;
+    border: 2px solid #20394f;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 8px;
+    background: #08141e;
+    border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 8px;
+    background: #20394f;
+    border-radius: 4px;
+}

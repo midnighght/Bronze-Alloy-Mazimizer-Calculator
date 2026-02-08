@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bronze Alloy Calculator</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: {
+            screens: {
+                'sm': '640px',
+                'md': '768px',
+                'lg': '1024px',
+                'xl': '1152px', //xl: three times tiny (modified)
+                '2xl': '1536px',
+                '3xl': '1920px',//3xl: five times tiny (custom)
+            },
+            extend: {
+                colors: {
+                    midnight: {
+                        50:  '#000000',
+                        100: '#f6d6bd',
+                        200: '#c3a38a',
+                        300: '#997577',
+                        400: '#816271',
+                        500: '#4e495f',
+                        600: '#20394f',
+                        700: '#0f2a3f',
+                        800: '#0C2335',
+                        900: '#0B1C2A',
+                        950: '#08141e',
+                    },
+                    ochre: '#814e16',
+                },
+            }
+        }}
+    </script>
+</head>
+
+<body class="h-screen bg-fixed bg-gradient-to-b from-midnight-950 to-midnight-900">
+    <div class="flex flex-col pt-4 mx-6 justify-between items-center">
+      
+      <!-- Headers -->
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-midnight-400">Bronze Alloy Maximizer Calculator</h2>
+        <h3 class="text-lg font-semibold text-midnight-500"><i>by Nighght</i></h3>
+      </div>
+
+          <div class="mt-4 mx-6 border-4 border-midnight-700/50 rounded-full"></div> <!-- line separator -->
+
+      <div class="text-center justify-between items-center max-w-lg w-full mx-auto my-3">
+
+        <h1 class="text-2xl font-bold text-midnight-100 mb-4">Bronze Alloy Type</h1>
+
+          <div class="flex gap-4 justify-center">
+              <button data-button="1"
+                  class="mode-button px-4 py-2 rounded-full transition shadow-md shadow-midnight-950/50">
+                  Tin Bronze
+              </button>
+              <button data-button="2"
+                  class="mode-button px-4 py-2 rounded-full transition shadow-md shadow-midnight-950/50">
+                  Bismuth Bronze
+              </button>
+              <button data-button="3"
+                  class="mode-button px-4 py-2 rounded-full transition shadow-md shadow-midnight-950/50">
+                  Black Bronze
+              </button>
+          </div>
+      </div>
+
+      <div id="materials-card" class="bg-transparent p-3 my-3 max-w-lg w-full text-center">
+        
+        <h1 class="text-2xl font-bold text-midnight-100 mb-4">Avalaible Metal Units</h1>
+
+        <div id="materials-input" class="w-full flex flex-row gap-2">
+
+          <div class="metal-input flex-1">
+              <div class="input-units text-midnight-100 text-lg pl-3 py-2 rounded-full bg-gradient-to-b from-midnight-600 to-midnight-700 shadow-md shadow-midnight-950/50 relative overflow-hidden w-auto max-w-[120px] h-[50px] mx-auto">
+                  <div class="absolute inset-0 bg-midnight-950/30"></div>
+                  <input type="number" min="0" step="1" value="0" id="metal1-input" class="relative bg-transparent text-center w-full h-full text-midnight-100 text-lg outline-none" />
+              </div>
+              <div class="metal-label text-midnight-400 text-xl font-bold">Metal 1</div>
+          </div>
+          <div class="metal-input flex-1">
+              <div class="input-units text-midnight-100 text-lg pl-3 py-2 rounded-full bg-gradient-to-b from-midnight-600 to-midnight-700 shadow-md shadow-midnight-950/50 relative overflow-hidden w-auto max-w-[120px] h-[50px] mx-auto">
+                  <div class="absolute inset-0 bg-midnight-950/30"></div>
+                  <input type="number" min="0" step="1" value="0" id="metal2-input" class="relative bg-transparent text-center w-full h-full text-midnight-100 text-lg outline-none" />
+              </div>
+              <div class="metal-label text-midnight-400 text-xl font-bold">Metal 2</div>
+          </div>
+          <div class="metal-input metal-extra flex-1">
+              <div class="input-units text-midnight-100 text-lg pl-3 py-2 rounded-full bg-gradient-to-b from-midnight-600 to-midnight-700 shadow-md shadow-midnight-950/50 relative overflow-hidden w-auto max-w-[120px] h-[50px] mx-auto">
+                  <div class="absolute inset-0 bg-midnight-950/30"></div>
+                  <input type="number" min="0" step="1" value="0" id="metal3-input" class="relative bg-transparent text-center w-full h-full text-midnight-100 text-lg outline-none" />
+              </div>
+              <div class="metal-label text-midnight-400 text-xl font-bold">Metal 3</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="result-card" class="bg-gradient-to-b from-midnight-600 to-midnight-700 rounded-lg shadow-md p-3 my-3 max-w-lg w-full text-center">
+        
+        <h1 class="text-2xl font-bold text-midnight-100 mb-4">Maximum Alloy</h1>
+
+        <div id="result-alloy" class="w-full flex flex-row gap-2 w-full">
+
+          <div class="result-metal flex-1">
+              <div class="result-units text-midnight-100 text-lg py-2 rounded-full bg-transparent shadow-inner shadow-midnight-950/50 relative overflow-hidden w-auto max-w-[120px] h-[50px] mx-auto flex items-center justify-center">
+                  <div class="absolute inset-0 bg-midnight-950/30"></div>
+                  <h3 class="relative">-</h3>
+              </div>
+              <div class="metal-label text-midnight-400 text-xl font-bold">Metal 1</div>
+          </div>
+          <div class="result-metal flex-1">
+              <div class="result-units text-midnight-100 text-lg py-2 rounded-full bg-transparent shadow-inner shadow-midnight-950/50 relative overflow-hidden w-auto max-w-[120px] h-[50px] mx-auto flex items-center justify-center">
+                  <div class="absolute inset-0 bg-midnight-950/30"></div>
+                  <h3 class="relative">-</h3>
+              </div>
+              <div class="metal-label text-midnight-400 text-xl font-bold">Metal 2</div>
+          </div>
+          <div class="result-metal metal-extra flex-1">
+              <div class="result-units text-midnight-100 text-lg py-2 rounded-full bg-transparent shadow-inner shadow-midnight-950/50 relative overflow-hidden w-auto max-w-[120px] h-[50px] mx-auto flex items-center justify-center">
+                  <div class="absolute inset-0 bg-midnight-950/30"></div>
+                  <h3 class="relative">-</h3>
+              </div>
+              <div class="metal-label text-midnight-400 text-xl font-bold">Metal 3</div>
+          </div>
+
+        </div>
+      </div>
+    
+    </div>
+    
+    <script src="bronze-alloy-calc.js"></script>
+
+</body>
+
+</html>
