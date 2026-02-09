@@ -167,9 +167,9 @@ function displayResults(max_alloy, optimal_ratios, metalCount) {
     }
 
     // Calculate the metal amounts needed
-    const metal1_needed = (optimal_ratios[0] * max_alloy);
-    const metal2_needed = (optimal_ratios[1] * max_alloy);
-    const metal3_needed = metalCount === 3 ? (optimal_ratios[2] * max_alloy) : 0;
+    const metal1_needed = Math.round(optimal_ratios[0] * max_alloy);
+    const metal2_needed = Math.round(optimal_ratios[1] * max_alloy);
+    const metal3_needed = metalCount === 3 ? Math.round(optimal_ratios[2] * max_alloy) : 0;
 
     // Display results
     resultElements[0].textContent = metal1_needed;
