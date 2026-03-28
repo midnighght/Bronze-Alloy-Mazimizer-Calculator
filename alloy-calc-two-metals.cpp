@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// ===== VALUES =====
+int X = 18;  // units of metal X
+int Y = 75;  // units of metal Y
+
+// Ratios ranges for metals X and Y
+double x_min = 0.20, x_max = 0.30; // for metal X
+double y_min = 0.70, y_max = 0.80; // for metal Y
+
 int main() {
-    // ===== VALUES =====
-    int X = 25;  // units of metal X
-    int Y = 75;  // units of metal Y
-
-    // Ratios ranges for metals X and Y
-    double x_min = 0.20, x_max = 0.30; // for metal X
-    double y_min = 0.70, y_max = 0.80; // for metal Y
-
     // ===== CASE 0: all units =====
     double ratio = double(X) / (X + Y);
     if (ratio >= x_min && ratio <= x_max) {
